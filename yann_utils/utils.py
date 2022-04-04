@@ -1,11 +1,17 @@
 import time
+from typing import TypeVar, List
+import itertools
+import functools
+
+T = TypeVar("T")
+
 
 def timer(func):
   """Simple timer decorator which outputs execution time in ms."""
 
   def timed(*args, **kwargs):
     t0 = time.time()
-    result = time.time()
+    res = func(*args, **kwargs)
     tf = time.time()
 
     print(f"{(tf - t0) * 1000:.1f}ms")
@@ -13,7 +19,19 @@ def timer(func):
 
   return timed
 
+
 def time_elapsed(t0):
   t_elapsed = (time.time() - t0) * 1000
   print(f"{t_elapsed}ms")
   return t_elapsed
+
+
+def flatten(list_o_list: List[List[T]]) -> List[T]:
+  return list(itertools.chain(*list_o_list))
+
+
+def compose(*functions):
+  def operation(f, g):
+    return lambda x: f(g(x))
+
+  return functools.reduce(operation, functions, lambda x: x)
