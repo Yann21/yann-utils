@@ -2,6 +2,7 @@ import time
 from typing import TypeVar, List
 import itertools
 import functools
+import matplotlib as mpl
 
 T = TypeVar("T")
 
@@ -35,3 +36,8 @@ def compose(*functions):
     return lambda x: f(g(x))
 
   return functools.reduce(operation, functions, lambda x: x)
+
+def clusters_to_cmap(clusters):
+  color_wheel = mpl.colormaps["gist_ncar"]
+  N = len(set(clusters))
+  return [color_wheel(cls / N) for cls in clusters]
