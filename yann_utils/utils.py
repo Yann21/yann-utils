@@ -41,3 +41,30 @@ def clusters_to_cmap(clusters):
   color_wheel = mpl.colormaps["gist_ncar"]
   N = len(set(clusters))
   return [color_wheel(cls / N) for cls in clusters]
+
+
+class Cache:
+  """Persistent and automated caching of objects."""
+  locs: List[str] = []
+
+  def __init__(self) -> None:
+    if os.path.exists("cache/_cache.pkl"):
+      with open("cache/_cache.pkl", "rb") as f:
+        mem = pickle.load(f)
+        self.locs = mem.locs
+
+
+  def save(self, obj: Any, name: str) -> None:
+    self.locs.append(name)
+    with open(f"cache/{name}.pkl", "wb") as f:
+      pickle.dump(obj, f)
+
+    with open(f"cache/_cache.pkl", "wb") as f:
+      pickle.dump(self, f)
+
+  def load(self, name: str) -> Any:
+    with open(f"cache/{name}.pkl", "rb") as f:
+      return pickle.load(f)
+
+  def __repr__(self):
+    return "\n".join(self.locs)
