@@ -1,16 +1,11 @@
-#%%
 import os
 import pickle
 import re
 from pathlib import Path
 from typing import Any, Iterable, Union
-
-import numpy as np
-
-#%%
+import tempfile
 
 
-#%%
 def chunk_obj(obj: Any, chunk_size_mb: int) -> Iterable[bytes]:
   """Chunk an object into bytes of a given size."""
   ser = pickle.dumps(obj)
@@ -31,7 +26,7 @@ def reconstruct_obj(chunks: Iterable[bytes]) -> Any:
 def persist_chunks(
   chunks: Iterable[bytes], dir: Union[str, Path], obj_name: str
 ) -> None:
-  """Persist chunks to disk"""
+  """Persist chunks to disk and return directory."""
   os.makedirs(dir, exist_ok=True)
   for i, chunk in enumerate(chunks):
     with open(f"{dir}/{obj_name}.pkl.part{i}", "wb") as file:
@@ -53,6 +48,3 @@ def get_chunks(dir: Union[str, Path]) -> Iterable[str]:
   chunks = [str(path) for path in chunks]
   chunks = sorted(chunks, key=get_numeric_suffix)
   return chunks
-
-
-#%%

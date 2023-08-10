@@ -8,6 +8,7 @@ packages = [{include = "yann_utils"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+numpy = "^1.25.2"
 
 
 [tool.poetry.group.dev.dependencies]
