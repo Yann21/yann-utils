@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Yann's Utilities'
+project = 'Yann\'s Utilities'
 copyright = "2022, Yann Hoffmann"
 author = "Yann Hoffmann"
 
@@ -128,7 +128,7 @@ latex_elements = {
 # [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'yann_utils.tex',
-     'Yann's Utilities Documentation',
+     'Yann\'s Utilities Documentation',
      'Yann Hoffmann', 'manual'),
 ]
 
@@ -139,7 +139,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'yann_utils',
-     'Yann's Utilities Documentation',
+     'Yann\'s Utilities Documentation',
      [author], 1)
 ]
 
@@ -151,7 +151,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'yann_utils',
-     'Yann's Utilities Documentation',
+     'Yann\'s Utilities Documentation',
      author,
      'yann_utils',
      'One line description of project.',
