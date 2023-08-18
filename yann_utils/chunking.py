@@ -1,3 +1,5 @@
+"""Utilities for chunking objects into bytes and reconstructing them."""""
+
 import os
 import pickle
 import re

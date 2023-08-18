@@ -1,3 +1,5 @@
+"""General utility functions."""
+
 import time
 from typing import TypeVar, List, Any
 import itertools
@@ -6,6 +8,7 @@ import matplotlib as mpl
 from typing import Dict, Generator, Tuple
 import pickle
 from tqdm import tqdm
+
 
 A = TypeVar("A")
 B = TypeVar("B")
@@ -28,6 +31,7 @@ def timer(func):
 
 
 def time_elapsed(t0: float) -> float:
+  """Return time elapsed since t0 in ms."""
   t_elapsed = (time.time() - t0) * 1000
   print(f"{t_elapsed}ms")
   return t_elapsed
@@ -35,9 +39,9 @@ def time_elapsed(t0: float) -> float:
 
 def flatten(list_o_list: List[List[T]]) -> List[T]:
   """
-    >>> flatten([[1, 2], [3, 4]])
-    [1, 2, 3, 4]
-    """
+  >>> flatten([[1, 2], [3, 4]])
+  [1, 2, 3, 4]
+  """
   return list(itertools.chain(*list_o_list))
 
 
@@ -61,9 +65,9 @@ def invert_dict(d: Dict[A, List[B]]) -> Dict[B, A]:
 
 def reassign_dict(ds: Dict[Any, Any], values: List[Any]) -> Dict[Any, Any]:
   """
-    >>> reassign_dict({"a": 1, "b": 2}, [2, 1])
-    {'a': 2, 'b': 1}
-    """
+  >>> reassign_dict({"a": 1, "b": 2}, [2, 1])
+  {'a': 2, 'b': 1}
+  """
   assert len(ds) == len(values)
   keys = list(ds.keys())
   return {keys[i]: values[i] for i in range(len(ds))}
@@ -79,25 +83,25 @@ def multiprocess_apply(func, args, n_jobs: int = 8) -> List[Any]:
 
 def list_set(xs: List) -> List:
   """
-    >>> list_set([1, 2, 3, 1, 2, 3])
-    [1, 2, 3]
-    """
+  >>> list_set([1, 2, 3, 1, 2, 3])
+  [1, 2, 3]
+  """
   return list(set(xs))
 
 
 def list_accessor(objects: List[O], field: str) -> List[A]:
   """
-    >>> list_accessor([{"a": 1}, {"a": 2}], "a")
-    [1, 2]
-    """
+  >>> list_accessor([{"a": 1}, {"a": 2}], "a")
+  [1, 2]
+  """
   return [o.__getattribute__(field) for o in objects]
 
 
 def enumerate_flipped(xs: List["E"]) -> Generator[Tuple["E", int], None, None]:
   """
-    >>> list(enumerate_flipped(["a", "b", "c"]))
-    [('a', 0), ('b', 1), ('c', 2)]
-    """
+  >>> list(enumerate_flipped(["a", "b", "c"]))
+  [('a', 0), ('b', 1), ('c', 2)]
+  """
   return ((x, i) for i, x in enumerate(xs))
 
 
