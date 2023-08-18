@@ -10,6 +10,7 @@ from tqdm import tqdm
 A = TypeVar("A")
 B = TypeVar("B")
 T = TypeVar("T")
+O = TypeVar("O")
 
 
 def timer(func):
