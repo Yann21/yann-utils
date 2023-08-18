@@ -81,7 +81,7 @@ def multiprocess_apply(func, args, n_jobs: int = 8) -> List[Any]:
     return list(tqdm.tqdm(pool.imap(func, args), total=len(args)))
 
 
-def list_set(xs: List) -> List:
+def list_set(xs: List[O]) -> List[O]:
   """
   >>> list_set([1, 2, 3, 1, 2, 3])
   [1, 2, 3]
