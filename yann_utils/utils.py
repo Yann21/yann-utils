@@ -107,6 +107,7 @@ def enumerate_flipped(xs: List["E"]) -> Generator[Tuple["E", int], None, None]:
 
 class Cache:
   """Persistent and automated caching of objects."""
+  import os
 
   locs: List[str] = []
 
@@ -130,3 +131,14 @@ class Cache:
 
   def __repr__(self):
     return "\n".join(self.locs)
+
+def set_seed(seed):
+  import random
+  import numpy as np
+  import torch
+
+  random.seed(seed)
+  np.random.seed(seed)
+  torch.manual_seed(seed)
+  torch.cuda.manual_seed_all(seed)
+  # if torch is installed

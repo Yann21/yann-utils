@@ -2,14 +2,14 @@ import pandas as pd
 import subprocess
 import os
 
-def csv_to_latex_png(df, png_filename):
+def csv_to_latex_png(df, png_filename, caption):
     # 1. Convert the df to LaTeX table format
     latex_code = r"""
     \documentclass{standalone}
     \usepackage{booktabs}
     \begin{document}
     """
-    latex_code += df.to_latex(index=False, escape=False)
+    latex_code += df.to_latex(index=True, escape=False, caption=caption)
     latex_code += r"\end{document}"
 
     with open("temp_table.tex", "w") as latex_file:
