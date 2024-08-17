@@ -3,8 +3,7 @@ import pickle
 import numpy as np
 import pytest
 
-from yann_utils.chunking import (chunk_obj, get_chunks, persist_chunks,
-                                 reconstruct_obj)
+from yann_utils.chunking import chunk_obj, get_chunks, persist_chunks, reconstruct_obj
 
 
 @pytest.fixture
