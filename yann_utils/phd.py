@@ -49,7 +49,7 @@ def csv_to_latex_png(df, caption="Table", index=False):
 
     # Display image inline
     img = mpimg.imread(png_file)
-    plt.figure(figsize=(10, 4))
+    plt.figure(figsize=(20, 10))
     plt.axis("off")
     plt.imshow(img)
     plt.show()
