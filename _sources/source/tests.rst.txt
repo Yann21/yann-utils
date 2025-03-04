@@ -1,0 +1,21 @@
+tests package
+=============
+
+Submodules
+----------
+
+tests.test\_chunking module
+---------------------------
+
+.. automodule:: tests.test_chunking
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: tests
+   :members:
+   :show-inheritance:
+   :undoc-members:
